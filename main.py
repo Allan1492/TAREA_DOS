@@ -16,3 +16,9 @@ class User(BaseModel):
 def create_user(user: User):
     users.append(user.dict())  # Guardar usuario como diccionario
     return {"message": f"User {user.name} added successfully!", "user": user}
+# *****************GET para obtener el primer usuario guardado*******************************************
+@app.get("/users/first")
+def get_first_user():
+    if users:
+        return {"first_user": users[0]}  # Retorna el primer usuario
+    return {"message": "No users found"}
